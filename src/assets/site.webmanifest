@@ -1,19 +1,24 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "Keto Diet",
+  "short_name": "Keto",
+  "description": "Small app to schedule Keto meals",
+  "start_url": "../index.html",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
+      "src": "/assets/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "/assets/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "theme_color": "#25c5d8",
+  "background_color": "#f5f7f9",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "dir": "ltr",
+  "lang": "en-US"
 }
