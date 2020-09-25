@@ -12,5 +12,6 @@ module.exports = {
     'react-hot-loader/babel',
     '@babel/transform-runtime',
     ['@babel/proposal-class-properties', { loose: true }],
+    '@babel/plugin-proposal-optional-chaining',
   ],
 };

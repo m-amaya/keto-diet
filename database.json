@@ -1,0 +1,95 @@
+{
+  "recipes": {
+    "peanut-butter-mug-cake": {
+      "name": "Peanut Butter Mug Cake",
+      "image": "/assets/pic.png",
+      "prep-time": {
+        "qty": 5,
+        "unit": "minutes"
+      },
+      "kcal": 329,
+      "carbs": {
+        "qty": 10.88,
+        "unit": "g"
+      },
+      "protein": {
+        "qty": 15.6,
+        "unit": "g"
+      },
+      "fat": {
+        "qty": 27.82,
+        "unit": "g"
+      },
+      "serving": 1,
+      "ingredients": {
+        "stevia": {
+          "name": "Granular Stevia",
+          "qty": 0.5,
+          "unit": "tsp",
+          "isOptional": true
+        },
+        "peanut-butter": {
+          "name": "Unsalted Peanut Butter",
+          "qty": 2,
+          "unit": "tsp",
+          "isOptional": false
+        },
+        "egg": {
+          "name": "Egg",
+          "qty": 1,
+          "unit": null,
+          "isOptional": false
+        },
+        "almond-flour": {
+          "name": "Almond Flour",
+          "qty": 1,
+          "unit": "tbsp",
+          "isOptional": true
+        },
+        "baking-powder": {
+          "name": "Baking Powder",
+          "qty": 0.5,
+          "unit": "tsp",
+          "isOptional": true
+        },
+        "water": {
+          "name": "Water",
+          "qty": 1,
+          "unit": "tbsp",
+          "isOptional": true
+        },
+        "butter": {
+          "name": "Butter",
+          "qty": 1,
+          "unit": "tsp",
+          "isOptional": false
+        }
+      },
+      "directions": ["Step 1", "Step 2"]
+    },
+    "tags": ["breakfast", "snack"]
+  },
+  "meal-plan": {
+    "user-id": {
+      "2020": {
+        "9": {
+          "24": {
+            "breakfast": "slug",
+            "morning-snack": "slug",
+            "lunch": "slug",
+            "evening-snack": "slug",
+            "dinner": "slug"
+          }
+        }
+      }
+    }
+  },
+  "shopping": {
+    "user-id": {
+      "dates": {
+        "start": "2020.9.24",
+        "end": "2020.9.26"
+      }
+    }
+  }
+}

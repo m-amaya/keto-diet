@@ -1,5 +1,6 @@
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import DotenvWebpackPlugin from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { resolve } from 'path';
 import { Configuration } from 'webpack';
@@ -50,6 +51,9 @@ const config: Configuration = {
           to: 'assets/',
         },
       ],
+    }),
+    new DotenvWebpackPlugin({
+      path: './.env',
     }),
     new CircularDependencyPlugin({ exclude: /node_modules/ }),
   ],
