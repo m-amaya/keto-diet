@@ -1,14 +1,15 @@
 import { Global } from '@emotion/core';
 import React, { FC } from 'react';
-import { fontFamily } from './typography';
+import { textFont, textFontSize } from './typography';
 
 export const GlobalStyles: FC = () => (
   <Global
     styles={{
       body: {
         backgroundColor: '#f5f7f9',
-        color: '#3b454e',
-        fontFamily,
+        color: '#3B454E',
+        fontFamily: textFont,
+        fontWeight: textFontSize.regular,
       },
       '*': {
         boxSizing: 'border-box',
