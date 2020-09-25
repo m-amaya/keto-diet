@@ -1,3 +1,5 @@
+type LoadingState = 'loading' | 'success' | 'fail';
+
 interface AdditionalUserData {
   firstName: string;
   lastName: string;

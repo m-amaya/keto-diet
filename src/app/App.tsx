@@ -1,54 +1,31 @@
 import { hot } from 'react-hot-loader/root';
 import React, { FC } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
 
-import { MealsPage } from 'app/pages/MealsPage';
-import { PasswordResetPage } from 'app/pages/PasswordResetPage';
-import { ProfilePage } from 'app/pages/ProfilePage';
-import { RecipesPage } from 'app/pages/RecipesPage';
-import { ShoppingPage } from 'app/pages/ShoppingPage';
-import { SigninPage } from 'app/pages/SigninPage';
-import { SignupPage } from 'app/pages/SignupPage';
-import * as ROUTES from 'store/routes';
+import { breakpoints } from 'app/components/styles/utils';
+import { MobileAuthLayout } from 'app/components/layouts/MobileAuthLayout';
+import { MobileLayout } from 'app/components/layouts/MobileLayout';
+import { PageAuthLayout } from 'app/components/layouts/PageAuthLayout';
+import { PageLayout } from 'app/components/layouts/PageLayout';
 import { useUser } from 'utils/hooks/useUser';
+import { useWindowSize } from 'utils/hooks/useWindowSize';
 
 export const App: FC = hot(() => {
-  const user = useUser();
+  const [loadingState, user] = useUser();
+  const [windowWidth] = useWindowSize();
 
-  console.log({ user });
+  const isMobile = windowWidth > 0 && windowWidth <= breakpoints.md;
 
-  return user ? (
-    <Switch>
-      <Route path={ROUTES.MEALS}>
-        <MealsPage />
-      </Route>
-      <Route path={ROUTES.SHOPPING}>
-        <ShoppingPage />
-      </Route>
-      <Route path={ROUTES.RECIPES}>
-        <RecipesPage />
-      </Route>
-      <Route path={ROUTES.PROFILE}>
-        <ProfilePage />
-      </Route>
-      <Route path="*">
-        <Redirect to={ROUTES.PROFILE} />
-      </Route>
-    </Switch>
+  return loadingState === 'loading' ? (
+    <div>Loading...</div>
+  ) : isMobile ? (
+    user ? (
+      <MobileLayout />
+    ) : (
+      <MobileAuthLayout />
+    )
+  ) : user ? (
+    <PageLayout />
   ) : (
-    <Switch>
-      <Route path={ROUTES.SIGNIN}>
-        <SigninPage />
-      </Route>
-      <Route path={ROUTES.SIGNUP}>
-        <SignupPage />
-      </Route>
-      <Route path={ROUTES.PASSWORD_RESET}>
-        <PasswordResetPage />
-      </Route>
-      <Route path="*">
-        <Redirect to={ROUTES.SIGNIN} />
-      </Route>
-    </Switch>
+    <PageAuthLayout />
   );
 });

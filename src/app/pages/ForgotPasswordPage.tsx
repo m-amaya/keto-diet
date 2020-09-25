@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { FirebaseCtx } from 'store/firebase';
 import * as ROUTES from 'store/routes';
 
-export const PasswordResetPage: FC = () => {
+export const ForgotPasswordPage: FC = () => {
   const { auth } = useContext(FirebaseCtx);
   const [email, setEmail] = useState('');
   const [emailHasBeenSent, setEmailHasBeenSent] = useState(false);
