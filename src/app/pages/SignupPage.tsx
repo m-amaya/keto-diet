@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import React, {
   FC,
   ChangeEventHandler,
@@ -5,7 +6,13 @@ import React, {
   useContext,
   useState,
 } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
+import { AuthForm } from 'app/components/forms/AuthForm';
+import { Button } from 'app/components/forms/Button';
+import { Input } from 'app/components/forms/Input';
+import { OrDivider } from 'app/components/forms/OrDivider';
+import { SubtleLink } from 'app/components/Link';
 import { FirebaseCtx } from 'store/firebase';
 import * as ROUTES from 'store/routes';
 
@@ -71,45 +78,65 @@ export const SignupPage: FC = () => {
   const onGoogleSignup = () => auth.signInWithPopup(provider);
 
   return (
-    <div>
-      <h1>Sign Up</h1>
+    <AuthForm footer={<Footer />}>
       {error && <div>{error.displayError}</div>}
-      <form>
-        <input
-          type="text"
-          placeholder="First Name"
-          autoComplete="given-name"
-          value={firstName}
-          onChange={onFirstNameChange}
-        />
-        <input
-          type="text"
-          placeholder="Last Name"
-          autoComplete="family-name"
-          value={lastName}
-          onChange={onLastNameChange}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          autoComplete="email"
-          value={email}
-          onChange={onEmailChange}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          autoComplete="current-password"
-          value={password}
-          onChange={onPasswordChange}
-        />
-        <button onClick={onEmailSignup}>Sign Up</button>
-        <div>or</div>
-        <button onClick={onGoogleSignup}>Sign Up with Google</button>
-      </form>
-      <div>
-        Already have an account? <Link to={ROUTES.SIGNUP}>Sign in here</Link>
-      </div>
-    </div>
+      <Button className="google" onClick={onGoogleSignup}>
+        Sign Up with Google
+      </Button>
+      <OrDivider />
+      <Input
+        type="text"
+        placeholder="First Name"
+        autoComplete="given-name"
+        value={firstName}
+        onChange={onFirstNameChange}
+      />
+      <Input
+        type="text"
+        placeholder="Last Name (optional)"
+        autoComplete="family-name"
+        value={lastName}
+        onChange={onLastNameChange}
+      />
+      <Input
+        type="email"
+        placeholder="Email Address"
+        autoComplete="email"
+        value={email}
+        onChange={onEmailChange}
+      />
+      <Input
+        type="password"
+        placeholder="Password"
+        autoComplete="current-password"
+        value={password}
+        onChange={onPasswordChange}
+      />
+      <Button
+        disabled={!firstName || !email || !password}
+        onClick={onEmailSignup}>
+        Sign Up
+      </Button>
+    </AuthForm>
   );
 };
+
+const Footer: FC = () => {
+  return (
+    <FooterWrapper>
+      <ArrowIcon className="fas fa-arrow-left"></ArrowIcon>
+      <SubtleLink to={ROUTES.SIGNIN}>Back</SubtleLink>
+    </FooterWrapper>
+  );
+};
+
+const FooterWrapper = styled.div({
+  alignItems: 'center',
+  display: 'flex',
+});
+
+const ArrowIcon = styled.i({
+  color: '#9DAAB6',
+  fontSize: 12,
+  marginRight: 4,
+});

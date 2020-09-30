@@ -19,11 +19,11 @@
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "@hot-loader/react-dom": "^17.0.0-rc.2",
+    "@hot-loader/react-dom": "16.13.0",
     "color": "^3.1.2",
     "firebase": "^7.21.1",
     "react": "^16.13.1",
-    "react-dom": "npm:@hot-loader/react-dom",
+    "react-dom": "npm:@hot-loader/react-dom@16.13.0",
     "react-hot-loader": "^4.13.0",
     "react-router-dom": "^5.2.0"
   },

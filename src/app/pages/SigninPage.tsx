@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import React, {
   FC,
   ChangeEventHandler,
@@ -5,7 +6,12 @@ import React, {
   useContext,
   useState,
 } from 'react';
-import { Link } from 'react-router-dom';
+
+import { AuthForm } from 'app/components/forms/AuthForm';
+import { Button } from 'app/components/forms/Button';
+import { Input } from 'app/components/forms/Input';
+import { OrDivider } from 'app/components/forms/OrDivider';
+import { DefaultLink, MutedLink } from 'app/components/Link';
 import { FirebaseCtx } from 'store/firebase';
 import * as ROUTES from 'store/routes';
 
@@ -42,33 +48,51 @@ export const SigninPage: FC = () => {
   const onGoogleSignin = () => auth.signInWithPopup(provider);
 
   return (
-    <div>
-      <h1>Sign In</h1>
-      <form>
-        <input
-          type="email"
-          placeholder="Email"
-          autoComplete="email"
-          value={email}
-          onChange={onEmailChange}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          autoComplete="current-password"
-          value={password}
-          onChange={onPasswordChange}
-        />
-        <button onClick={onEmailSignin}>Sign In</button>
-        <div>or</div>
-        <button onClick={onGoogleSignin}>Sign In with Google</button>
-      </form>
+    <AuthForm footer={<Footer />}>
+      <Button className="google" onClick={onGoogleSignin}>
+        Sign In with Google
+      </Button>
+      <OrDivider />
+      <Input
+        type="email"
+        placeholder="Email Address"
+        autoComplete="email"
+        value={email}
+        onChange={onEmailChange}
+      />
+      <Input
+        type="password"
+        placeholder="Password"
+        autoComplete="current-password"
+        value={password}
+        onChange={onPasswordChange}
+      />
       <div>
-        Don't have an account? <Link to={ROUTES.SIGNUP}>Sign up here</Link>
+        <Button onClick={onEmailSignin} disabled={!email || !password}>
+          Sign In
+        </Button>
+        <ForgotPassword>
+          <MutedLink to={ROUTES.FORGOT_PASSWORD}>Forgot password?</MutedLink>
+        </ForgotPassword>
       </div>
-      <div>
-        <Link to={ROUTES.PASSWORD_RESET}>Forgot password?</Link>
-      </div>
-    </div>
+    </AuthForm>
   );
 };
+
+const ForgotPassword = styled.div({
+  paddingTop: 8,
+  textAlign: 'right',
+});
+
+const Footer: FC = () => {
+  return (
+    <FooterWrapper>
+      <div>Don't have an account yet?</div>
+      <DefaultLink to={ROUTES.SIGNUP}>Let's create one!</DefaultLink>
+    </FooterWrapper>
+  );
+};
+
+const FooterWrapper = styled.div({
+  textAlign: 'center',
+});

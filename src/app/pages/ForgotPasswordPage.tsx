@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import React, {
   ChangeEventHandler,
   FC,
@@ -5,7 +6,12 @@ import React, {
   useContext,
   useState,
 } from 'react';
-import { Link } from 'react-router-dom';
+
+import { AuthForm } from 'app/components/forms/AuthForm';
+import { Button } from 'app/components/forms/Button';
+import { Input } from 'app/components/forms/Input';
+import { OrDivider } from 'app/components/forms/OrDivider';
+import { SubtleLink } from 'app/components/Link';
 import { FirebaseCtx } from 'store/firebase';
 import * as ROUTES from 'store/routes';
 
@@ -44,18 +50,46 @@ export const ForgotPasswordPage: FC = () => {
   };
 
   return (
-    <div>
-      <h1>Password Reset</h1>
-      <form>
-        <input
-          type="email"
-          placeholder="Email address"
-          value={email}
-          onChange={onEmailChange}
-        />
-        <button onClick={onSubmit}>Send me a reset link</button>
-      </form>
-      <Link to={ROUTES.SIGNIN}>Back to Sign In</Link>
-    </div>
+    <AuthForm footer={<Footer />}>
+      <Copy>
+        Don't worry, happens to the best of us! Enter your email and we'll send
+        you a reset link.
+      </Copy>
+      <Input
+        type="email"
+        placeholder="Email Address"
+        value={email}
+        onChange={onEmailChange}
+      />
+      <Button disabled={!email} onClick={onSubmit}>
+        Send
+      </Button>
+    </AuthForm>
   );
 };
+
+const Copy = styled.div({
+  color: '#3B454E',
+  fontSize: 16,
+  lineHeight: '22px',
+});
+
+const Footer: FC = () => {
+  return (
+    <FooterWrapper>
+      <ArrowIcon className="fas fa-arrow-left"></ArrowIcon>
+      <SubtleLink to={ROUTES.SIGNIN}>Back</SubtleLink>
+    </FooterWrapper>
+  );
+};
+
+const FooterWrapper = styled.div({
+  alignItems: 'center',
+  display: 'flex',
+});
+
+const ArrowIcon = styled.i({
+  color: '#9DAAB6',
+  fontSize: 12,
+  marginRight: 4,
+});

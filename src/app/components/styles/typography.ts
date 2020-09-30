@@ -6,7 +6,7 @@ export const titleFontWeight = {
 
 export const textFont = `'Work Sans', --apple-system, blinkmacsystemfont, 'Segoe UI', helvetica, aria, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'`;
 
-export const textFontSize = {
+export const textFontWeight = {
   regular: 400,
   medium: 500,
   semiBold: 600,
