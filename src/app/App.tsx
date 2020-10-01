@@ -13,7 +13,7 @@ export const App: FC = hot(() => {
   const [loadingState, user] = useUser();
   const [windowWidth] = useWindowSize();
 
-  const isMobile = windowWidth > 0 && windowWidth <= breakpoints.md;
+  const isMobile = windowWidth <= breakpoints.md;
 
   return loadingState === 'loading' ? (
     <div>Loading...</div>

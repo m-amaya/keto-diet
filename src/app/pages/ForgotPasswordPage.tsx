@@ -10,7 +10,6 @@ import React, {
 import { AuthForm } from 'app/components/forms/AuthForm';
 import { Button } from 'app/components/forms/Button';
 import { Input } from 'app/components/forms/Input';
-import { OrDivider } from 'app/components/forms/OrDivider';
 import { SubtleLink } from 'app/components/Link';
 import { FirebaseCtx } from 'store/firebase';
 import * as ROUTES from 'store/routes';
